@@ -6,7 +6,18 @@ CORS(app)
 
 @app.route("/test-message", methods = ["GET"])
 def hello_world():
-    return "Hello, World!"
+    return {
+        "data": [
+            {
+                "name": "Joe",
+                "age": 30
+            },
+            {
+                "name": "John",
+                "age": 43
+            }
+        ]
+    }
 
 
 if __name__ == "__main__":

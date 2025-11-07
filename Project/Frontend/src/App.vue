@@ -1,9 +1,9 @@
 <script setup>
 import { ref, onMounted } from "vue"
 
-const message = ref("No data yet.")
+const data = ref("No data yet.")
 
-const url = "http://localhost:5001/"
+const url = "http://localhost:5001/test-message"
 
 async function fetchTestMessage() {
   try {
@@ -15,7 +15,7 @@ async function fetchTestMessage() {
 
     const result = await response.json()
 
-    return result
+    return result.data
   }
   catch (error) {
     return error.message
@@ -23,12 +23,16 @@ async function fetchTestMessage() {
 }
 
 onMounted(() => {
-  fetchTestMessage().then(response => message.value = response)
+  fetchTestMessage().then(response => data.value = response)
 })
 </script>
 
 <template>
-  <h1>Result: {{ message }}</h1>
+  <div v-for="user in data">
+    <h1>{{ user.name }}</h1>
+    <h1>{{ user.age }}</h1>
+    <hr>
+  </div>
 </template>
 
 <style scoped></style>
