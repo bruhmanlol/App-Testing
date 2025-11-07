@@ -3,7 +3,7 @@ import { ref, onMounted } from "vue"
 
 const message = ref("No data yet.")
 
-const url = "/test-message"
+const url = "http://localhost:5001/"
 
 async function fetchTestMessage() {
   try {
